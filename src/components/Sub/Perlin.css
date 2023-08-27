@@ -1,0 +1,13 @@
+.perlin {
+    margin: auto;
+    background: #1b1b1b;
+    height: 100vh;
+    /* Ensure the container is at least viewport height */
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: aliceblue;
+}
