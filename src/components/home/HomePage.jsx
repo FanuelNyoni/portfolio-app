@@ -1,102 +1,89 @@
 // Import necessary dependencies
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 
 // Define the HomePage component
 const HomePage = () => {
-  // Refs to interact with elements in the DOM
-  const logoRef = useRef(null);
-  const cubeRef = useRef(null);
-  const messageRef = useRef(null);
-  
-  // State to manage the current message index
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [gridSize] = useState({ rows: 4, cols: 4 });
+  const [flowField, setFlowField] = useState([]);
 
-  // useEffect hook to manage the typing effect and message cycling
   useEffect(() => {
-    // Array of messages to be displayed
-    const messages = [
-      "Welcome to Pixel Palate",
-      "Home of the Juicy Fruit People 😊",
-      "Tasty web solutions for your digital hunger!",
-    ];
+    const field = Array.from({ length: gridSize.rows }, () =>
+      Array.from({ length: gridSize.cols }, () => ({
+        angle: Math.random() * Math.PI * 2,
+      }))
+    );
+    setFlowField(field);
+  }, [gridSize.rows, gridSize.cols]);
 
-    // Reference to the message element
-    const messageElement = messageRef.current;
-    // Get the current message to be displayed
-    const currentMessage = messages[currentMessageIndex];
-    // Variable to keep track of the current character index being typed
-    let currentCharIndex = 0;
-    // Timers for typing and deleting messages
-    let typingTimer;
-    let deletingTimer;
+  const handleCellMouseMove = (rowIndex, colIndex, event) => {
+    const cellRect = event.currentTarget.getBoundingClientRect();
+    const mouseX = event.clientX - cellRect.left;
+    const mouseY = event.clientY - cellRect.top;
+    const angle = Math.atan2(
+      mouseY - cellRect.height / 0.5,
+      mouseX - cellRect.width / 0.5
+    );
 
-    // Function to simulate typing a letter
-    const typeLetter = () => {
-      if (currentCharIndex < currentMessage.length) {
-        messageElement.textContent += currentMessage[currentCharIndex];
-        currentCharIndex++;
-        typingTimer = setTimeout(typeLetter, 100); // Adjust the typing speed as desired
-      } else {
-        deletingTimer = setTimeout(deleteLetter, 1000); // Adjust the delay before deleting as desired
-      }
-    };
-
-    // Function to simulate deleting a letter
-    const deleteLetter = () => {
-      if (currentCharIndex >= 0) {
-        messageElement.textContent = currentMessage.slice(0, currentCharIndex);
-        currentCharIndex--;
-        deletingTimer = setTimeout(deleteLetter, 50); // Adjust the deleting speed as desired
-      } else {
-        // Cycle to the next message after deleting is finished
-        setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
-        clearTimeout(deletingTimer);
-        typingTimer = setTimeout(typeLetter, 500); // Adjust the delay before typing the next message as desired
-      }
-    };
-
-    // Initial delay before typing starts
-    typingTimer = setTimeout(typeLetter, 500); // Adjust the initial delay before typing as desired
-
-    // Cleanup function to clear the timers when the component unmounts or when currentMessageIndex changes
-    return () => {
-      clearTimeout(typingTimer);
-      clearTimeout(deletingTimer);
-    };
-  }, [currentMessageIndex]);
+    const updatedFlowField = [...flowField];
+    updatedFlowField[rowIndex][colIndex].angle = angle;
+    setFlowField(updatedFlowField);
+  };
 
   // Render the component JSX
   return (
-    <div className="homepage">
+    <div className="home-page">
       {/* Background image */}
-      <div className="background" />
-      <div className="content">
-        {/* Logo container */}
-        <div className="logo-container">
-          {/* Rotating cubes */}
-          <div ref={cubeRef} className="cube" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 100 100"
-            className="logo"
-          >
-            {/* SVG logo paths */}
-            <text x="15%" y="50%" className="logo-text-blue">
-              Pixel
-            </text>
-            <text x="50%" y="50%" className="logo-text-yellow">
-              Palate
-            </text>
-          </svg>
-          <div ref={cubeRef} className="cube" />
-        </div>
-        {/* Window with typing message */}
-        <div className="window">
-          <div className="window-content">
-            <div className="typing-message" ref={messageRef}>
-              <p className="message-text"></p>
+      <div className="home-page-content">
+        <h1 className="home-page-title">
+          Drink Water <br />{" "}
+          <span>
+            {" "}
+            <div className="spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
+            & Code{" "}
+            <div className="spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </span>
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quae
+          doloribus, dolore consequuntur eveniet quam saepe labore maxime
+          doloremque aperiam debitis totam enim.
+        </p>
+        <button className="app-button">Lets Talk..</button>
+      </div>
+      <div className="home-page-animation">
+        <div className="animation-card">
+          <div className="flow-field">
+            {flowField.map((row, rowIndex) => (
+              <div key={rowIndex} className="flow-row">
+                {row.map((cell, colIndex) => (
+                  <div
+                    key={colIndex}
+                    className="flow-cell"
+                    onMouseMove={(e) =>
+                      handleCellMouseMove(rowIndex, colIndex, e)
+                    }
+                    style={{
+                      transform: `rotate(${cell.angle}rad)`,
+                    }}
+                  />
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </div>

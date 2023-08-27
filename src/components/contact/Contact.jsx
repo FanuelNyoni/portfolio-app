@@ -2,54 +2,111 @@ import React, { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const [messageSent, setMessageSent] = useState(false);
-  const [formBlur, setFormBlur] = useState(false);
-  const [formData, setFormData] = useState({ email: '', message: '' });
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [formErrors, setFormErrors] = useState({});
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    // Clear related error when user starts typing
+    setFormErrors({
+      ...formErrors,
+      [name]: ''
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add code here to send the message (you can use a service like EmailJS or Formspree)
-    setMessageSent(true);
-    setFormBlur(true);
+
+    // Perform form validation
+    const errors = {};
+    if (!formData.name) errors.name = 'Name is required.';
+    if (!formData.email) errors.email = 'Email is required.';
+    if (!formData.message) errors.message = 'Message is required.';
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    // Simulate sending data to the server
+    setIsFormSubmitted(true);
     setTimeout(() => {
-      setMessageSent(false);
-      setFormBlur(false);
-    }, 10000);
+      setIsFormSubmitted(false);
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    }, 3000); // Reset after 3 seconds
   };
+
 
   return (
     <div className="contact-container">
-      <h1>Contact</h1>
-      <form onSubmit={handleSubmit} className={formBlur ? 'blur' : ''}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
+      <div className="left-card">
+        <p className={`custom-message ${isFormSubmitted ? 'message-hidden' : ''}`}>
+          "The only way to do great work is to love what you do." – Steve Jobs
+        </p>
+      </div>
+      <div className="right-card">
+        <form className={`contact-form ${isFormSubmitted ? 'form-submitted' : ''}`} onSubmit={handleSubmit}>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className={`animated-input ${formErrors.name ? 'input-error' : ''}`}
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+          {formErrors.name && <span className="error-message">{formErrors.name}</span>}
+
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
             name="email"
+            className={`animated-input ${formErrors.email ? 'input-error' : ''}`}
+            placeholder="Email"
             value={formData.email}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
+          {formErrors.email && <span className="error-message">{formErrors.email}</span>}
+
+          <label htmlFor="message">Message</label>
           <textarea
             id="message"
             name="message"
+            className={`animated-input ${formErrors.message ? 'input-error' : ''}`}
+            placeholder="Message"
+            rows="4"
             value={formData.message}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
-        </div>
-        <button className='form-btn' type="submit">Send</button>
-      </form>
-      {messageSent && <div className="success-message">Message has been sent!</div>}
+          {formErrors.message && <span className="error-message">{formErrors.message}</span>}
+
+          <button type="submit" className="send-button">
+            {isFormSubmitted ? 'Sending...' : 'Send'}
+          </button>
+        </form>
+        {isFormSubmitted && (
+          <div className="loading-container">
+            <p className="submission-message">
+              Message Sent! We'll get back to you soon.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

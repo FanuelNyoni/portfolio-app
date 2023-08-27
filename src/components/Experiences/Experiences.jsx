@@ -1,72 +1,93 @@
-import React from 'react';
-import './Experiences.css';
+import React from "react";
+import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import "./Experiences.css";
+
 
 const Experiences = () => {
   return (
     <div className="experiences-container">
-      <div className="timeline-line"></div>
-      <ul className="timeline">
-        <li className="experience-item">
-          <div className="flag-wrapper">
-            <span className="flag">Web Development Degree</span>
-            <span className="time-wrapper">
-              <span className="time">Aug 2013 - May 2017</span>
-            </span>
-          </div>
-          <div className="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ultrices elit. Donec lacinia.
-          </div>
-          <div className="bar">
-              <div className="emptybar"></div>
-              <div className="filledbar"></div>
+      <div className="animated-title">&lt;My Journey. /&gt;</div>
+      <div className="cards-container">
+        <div className="card">
+          <div className="face face1">
+            <div className="content">
+              <FaGraduationCap className="icon" /> <h2>- Education -</h2>
             </div>
-        </li>
-        <li className="experience-item">
-          <div className="flag-wrapper">
-            <span className="flag">Junior Web Developer</span>
-            <span className="time-wrapper">
-              <span className="time">Jun 2017 - Dec 2018</span>
-            </span>
           </div>
-          <div className="desc">
-            Duis et interdum mi. Quisque malesuada risus a ipsum consequat, vel aliquam risus.
-          </div>
-          <div className="bar">
-              <div className="emptybar"></div>
-              <div className="filledbar"></div>
+          <div className="face face2">
+            <div className="content">
+              <div className="timeline">
+                <div className="timeline-left">
+                  <div className="date">Jan 2013</div>
+                  <div className="timeline-content">
+                    <h4>Chemistry Degree</h4>
+                    <p>Fake University</p>
+                  </div>
+                </div>
+                <div className="timeline-right">
+                  <div className="date">Jan 2013</div>
+                  <div className="timeline-content">
+                    <h4>Chemistry Degree</h4>
+                    <p>Fake University</p>
+                  </div>
+                </div>
+                <div className="timeline-left">
+                  <div className="date">Jan 2013</div>
+                  <div className="timeline-content">
+                    <h4>Chemistry Degree</h4>
+                    <p>Fake University</p>
+                  </div>
+                </div>
+                <div className="timeline-right">
+                  <div className="date">Jan 2013</div>
+                  <div className="timeline-content">
+                    <h4>Chemistry Degree</h4>
+                    <p>Fake University</p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </li>
-        <li className="experience-item">
-          <div className="flag-wrapper">
-            <span className="flag">Senior Web Developer</span>
-            <span className="time-wrapper">
-              <span className="time">Jan 2019 - Present</span>
-            </span>
           </div>
-          <div className="desc">
-            Suspendisse malesuada ipsum non ex laoreet tristique. Aliquam in felis sit amet neque faucibus.
-          </div>
-          <div className="bar">
-              <div className="emptybar"></div>
-              <div className="filledbar"></div>
+        </div>
+
+        <div className="card">
+          <div className="face face1">
+            <div className="content">
+              <FaBriefcase className="icon" /> <h2>- Work -</h2>
             </div>
-        </li>
-        <li className="experience-item">
-          <div className="flag-wrapper">
-            <span className="flag">Senior Web Developer</span>
-            <span className="time-wrapper">
-              <span className="time">Jan 2019 - Present</span>
-            </span>
           </div>
-          <div className="desc">
-            Suspendisse malesuada ipsum non ex laoreet tristique. Aliquam in felis sit amet neque faucibus.
-          </div>
-          <div className="bar">
-              <div className="emptybar"></div>
-              <div className="filledbar"></div>
+          <div className="face face2">
+            <div className="content">             
+              <div className="work-timeline">
+                <div className="event-left">
+                  <div className="work-content">
+                    <span>Jan 2020</span>
+                    <p>Fake Company</p>
+                  </div>
+                </div>
+                <div className="event-right">
+                  <div className="work-content">
+                    <span>Jan 2020</span>
+                    <p>Fake Company</p>
+                  </div>
+                </div>
+                <div className="event-left">
+                  <div className="work-content">
+                    <span>Jan 2020</span>
+                    <p>Fake Company</p>
+                  </div>
+                </div>
+                <div className="event-right">
+                  <div className="work-content">
+                    <span>Jan 2020</span>
+                    <p>Fake Company</p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </li>
-      </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

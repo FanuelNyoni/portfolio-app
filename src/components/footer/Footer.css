@@ -1,92 +1,81 @@
-.footer {
-    background-color: #333;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
+/* Footer styles */
+.footer-container {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 5s;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s;
+}
+
+.full-footer {
+  width: 100%;
+  bottom: 0;
+}
+
+.mini-footer {
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.mini-footer:hover {
+  background-color: #F7931E;
+  transform: translateX(-5px);
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.1rem;
+}
+
+.footer-icon {
+  font-size: 1em;
+  transition: transform 0.3s, color 0.3s;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  color: #c4c4c4;
+  margin: auto 1rem;
+}
+
+.footer-icons a:hover .footer-icon {
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+/* Footer text styles */
+.footer-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #333333;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  .footer-container {
     width: 100%;
-    transition: transform 0.3s ease-in-out;
+    left: 0;
+    bottom: 0;
+    border-radius: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
-  
+
   .footer-icons {
-    display: flex;
-    align-items: center;
+    margin-bottom: 0;
   }
-  
+
   .footer-icon {
-    margin-right: 15px;
-    transition: transform 0.2s, color 0.2s;
+    margin-right: 10px;
   }
-  
-  .footer-icon:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-  
-  .footer-location {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-  }
-  
-  .footer-location span {
-    margin-left: 5px;
-    color: #fff;
-  }
-  
-  .full-footer {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .visible {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .hidden {
-    transform: translateY(100%);
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  .footer-mini {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: width 0.3s, height 0.3s, border-radius 0.3s;
-  }
-  
-  .footer-mini.expanded {
-    width: 180px;
-    height: 60px;
-    border-radius: 30px;
-  }
-  
-  .footer-mini svg {
-    margin: 0 5px;
-    transition: transform 0.3s;
-  }
-  
-  .footer-mini.expanded svg:nth-child(odd) {
-    transform: translateY(-30px);
-  }
-  
-  .footer-mini.expanded svg:nth-child(even) {
-    transform: translateY(30px);
-  }
-  
-  /* Add more hover animations or styles as needed */
-  
+}
