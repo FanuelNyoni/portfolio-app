@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Styles for the homepage container */
+.homepage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Background image */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background-image: url('./../../img/bg/sebastian-svenson-d2w-_1LJioQ-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: backgroundAnimation 30s infinite;
+  filter: saturate(4) grayscale(0.3);
+}
+
+/* Background animation keyframes */
+@keyframes backgroundAnimation {
+  0% {
+    transform: scale(1) translateX(0%);
+  }
+  50% {
+    transform: scale(1.1) translateX(-5%);
+  }
+  100% {
+    transform: scale(1)translateX(0%);
+  }
+}
+
+/* Styles for the content container */
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 69%;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+
+/* Styles for the logo container */
+.logo-container {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+/* Styles for the rotating cubes */
+.cube {
+  position: relative;
+  transform: translate(-50%, -50%);
+  width: 50px; /* Adjust the cube size as desired */
+  height: 50px; /* Adjust the cube size as desired */
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  animation: rotate_cube 10s linear infinite;
+  opacity: 0.1;
+  z-index: -100;
+}
+
+/* Cube rotation animation keyframes */
+@keyframes rotate_cube {
+  0% {
+    background: linear-gradient(to right, #2bc0e4, #eaecc6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transform: rotateY(0deg);
+  }
+  25% {
+    background: linear-gradient(to left, #ede574, #e1f5c4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transform: rotateY(90deg);
+  }
+  50% {
+    background: linear-gradient(to left, #a8ff78, #78ffd6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transform: rotateY(180deg);
+  }
+  75% {
+    background: linear-gradient(to left, #00f260, #0575e6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transform: rotateY(270deg);
+  }
+  100% {
+    background: linear-gradient(to right, #2bc0e4, #eaecc6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transform: rotateY(360deg);
+  }
+}
+
+/* Styles for the logo SVG */
+.logo {
+  height: auto;
+  position: relative;
+  font-family: 'Indie Flower', cursive;
+  font-family: 'VT323', monospace;
+  font-weight: 600;
+  animation: color-change 15s infinite alternate;
+  filter: contrast(10px) drop-shadow( 0 0 1px rgb(0, 204, 255));
+  padding: 10px 20px;
+}
+
+
+/* Logo color change animation keyframes */
+@keyframes color-change {
+   0% {
+     fill: #0c0c0c;
+   }
+   100% {
+     fill: #ffffff ;
+     filter: drop-shadow(3px 3px 1px #000000);
+   }
+}
+
+/* Styles for the window container */
+.window {
+  position: relative;
+  width: 100%; /* Adjust the width as desired */
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust the background color and transparency as desired */
+  overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Styles for the window content */
+.window-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the typing message */
+.typing-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem; /* Adjust the font size as desired */
+  color: #61dbfb; /* #526d74; Update with the desired color */
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 1s step-end infinite;
+}
+
+/* Blink animation keyframes */
+@keyframes blink {
+  50% {
+    border-right: 2px solid transparent;
+  }
+}
+
+/* Styles for the message text */
+.message-text {
+  margin-right: 0.5rem;
+}
+
+/* Add hover animation to the logo */
+.logo-container:hover .logo {
+  transform: scale(1.2) rotateZ(10deg);
+}
