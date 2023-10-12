@@ -1,110 +1,150 @@
-import React, { useState } from 'react';
-import './Contact.css';
+import React, { useState } from "react";
+import "./Contact.css";
 
 const Contact = () => {
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    contact_name: "",
+    contact_email: "",
+    contact_message: "",
   });
-  const [formErrors, setFormErrors] = useState({});
 
-  const handleInputChange = (e) => {
+  const [formErrors, setFormErrors] = useState({
+    contact_name: "",
+    contact_email: "",
+    contact_message: "",
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
-    });
-    // Clear related error when user starts typing
-    setFormErrors({
-      ...formErrors,
-      [name]: ''
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.contact_name) {
+      errors.contact_name = "Name is required";
+    }
+    if (!formData.contact_email) {
+      errors.contact_email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contact_email)) {
+      errors.contact_email = "Invalid email format";
+    }
+    if (!formData.contact_message) {
+      errors.contact_message = "Message is required";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Perform form validation
-    const errors = {};
-    if (!formData.name) errors.name = 'Name is required.';
-    if (!formData.email) errors.email = 'Email is required.';
-    if (!formData.message) errors.message = 'Message is required.';
+    if (validateForm()) {
+      // Simulate form submission to Formspree (replace with actual Formspree action URL)
+      // You should replace 'https://your-formspree-endpoint' with your Formspree endpoint
+      // Example: const formUrl = 'https://formspree.io/your-email@example.com';
+      const formUrl = 'https://formspree.io/f/mrgwyrdd';
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
+      try {
+        // Simulate form submission
+        await fetch(formUrl, {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        // Form submission successful, reset form and show thank you message
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            contact_name: "",
+            contact_email: "",
+            contact_message: "",
+          });
+        }, 5000); // Reset the form after 5 seconds
+      } catch (error) {
+        console.error('Form submission error:', error);
+      }
     }
-
-    // Simulate sending data to the server
-    setIsFormSubmitted(true);
-    setTimeout(() => {
-      setIsFormSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-    }, 3000); // Reset after 3 seconds
   };
 
-
   return (
-    <div className="contact-container">
-      <div className="left-card">
-        <p className={`custom-message ${isFormSubmitted ? 'message-hidden' : ''}`}>
-          "The only way to do great work is to love what you do." – Steve Jobs
+    <div id="contact" className="contact">
+            <div className="page-title">&lt;Contact. /&gt;</div>
+      <div className="contact-left-card">
+        <p className="contact-custom-message">
+          "when everything fails, drink water"
         </p>
       </div>
-      <div className="right-card">
-        <form className={`contact-form ${isFormSubmitted ? 'form-submitted' : ''}`} onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className={`animated-input ${formErrors.name ? 'input-error' : ''}`}
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-          {formErrors.name && <span className="error-message">{formErrors.name}</span>}
-
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className={`animated-input ${formErrors.email ? 'input-error' : ''}`}
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          {formErrors.email && <span className="error-message">{formErrors.email}</span>}
-
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            className={`animated-input ${formErrors.message ? 'input-error' : ''}`}
-            placeholder="Message"
-            rows="4"
-            value={formData.message}
-            onChange={handleInputChange}
-          />
-          {formErrors.message && <span className="error-message">{formErrors.message}</span>}
-
-          <button type="submit" className="send-button">
-            {isFormSubmitted ? 'Sending...' : 'Send'}
-          </button>
-        </form>
-        {isFormSubmitted && (
-          <div className="loading-container">
-            <p className="submission-message">
-              Message Sent! We'll get back to you soon.
-            </p>
+      <div className={`contact-right-card ${isSubmitted ? 'submitted' : ''}`}>
+        {isSubmitted ? (
+          <div className="thank-you-message">
+            Thank you, we will get in touch soon.
           </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div className="contact-form-group">
+              <label htmlFor="contact_name">Name</label>
+              <input
+                className={`contact-input ${formErrors.contact_name ? 'error' : ''}`}
+                type="text"
+                name="contact_name"
+                id="contact_name"
+                placeholder="Name"
+                value={formData.contact_name}
+                onChange={handleChange}
+              />
+              {formErrors.contact_name && (
+                <span className="contact-error-message">
+                  {formErrors.contact_name}
+                </span>
+              )}
+            </div>
+            <div className="contact-form-group">
+              <label htmlFor="contact_email">Email</label>
+              <input
+                className={`contact-input ${formErrors.contact_email ? 'error' : ''}`}
+                type="email"
+                name="contact_email"
+                id="contact_email"
+                placeholder="Email"
+                value={formData.contact_email}
+                onChange={handleChange}
+              />
+              {formErrors.contact_email && (
+                <span className="contact-error-message">
+                  {formErrors.contact_email}
+                </span>
+              )}
+            </div>
+            <div className="contact-form-group">
+              <label htmlFor="contact_message">Message</label>
+              <textarea
+                className={`contact-textarea ${formErrors.contact_message ? 'error' : ''}`}
+                name="contact_message"
+                id="contact_message"
+                placeholder="Message"
+                value={formData.contact_message}
+                onChange={handleChange}
+              ></textarea>
+              {formErrors.contact_message && (
+                <span className="contact-error-message">
+                  {formErrors.contact_message}
+                </span>
+              )}
+            </div>
+            <button className="app-button" style={{margin: "auto"}} type="submit">
+              Submit
+            </button>
+          </form>
         )}
       </div>
     </div>

@@ -1,0 +1,367 @@
+/* Parent container */
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  gap: 20px;
+  position: relative;
+  background: url("../../img/bg/milad-fakurian-JTKKRK05NAM-unsplash.jpg");
+  background-size: cover;
+}
+
+.flip-card-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.flip-card-container {
+  height: 100%;
+  perspective: 100%;
+}
+
+/* Flip card */
+.flip-card {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 1.12s ease-in-out;
+}
+
+.flip-card-wrapper .flip-card-container:nth-child(1) .flip-card {
+  background-color: #f7931e; /* Background color for the first card */
+}
+
+/* Second card */
+.flip-card-wrapper .flip-card-container:nth-child(2) .flip-card {
+  background-color: #00295c; /* Background color for the second card */
+}
+
+/* Third card */
+.flip-card-wrapper .flip-card-container:nth-child(3) .flip-card {
+  background-color: #00a05c; /* Background color for the third card */
+}
+
+/* Card front and back */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  object-fit: contain;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card front styles */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+  flex-direction: column;
+  padding: clamp(0rem, 1vw + 0.5rem, 1rem);
+  gap: 1rem;
+}
+
+/* Flip card hover and focus states */
+.flip-card-container:hover .flip-card,
+.flip-card-container:focus-within .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* Service title styles */
+.service-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  background: #000000;
+  padding: 16px 24px;
+}
+
+.service-title span {
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.service-title span::after {
+  display: flex;
+  content: "";
+  width: 100%;
+  margin-top: 64px;
+  height: 1px;
+  background: linear-gradient(
+    to bottom right,
+    transparent,
+    #f7931e,
+    #0160d4,
+    #00a05c,
+    transparent
+  );
+  position: absolute;
+  background-size: 200%;
+  bottom: 0;
+  align-self: center;
+  animation: movingBackground 8s ease-in-out 2s infinite both;
+}
+
+@keyframes movingBackground {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 200px 100px;
+  }
+}
+
+/* Service summary styles */
+.service-summary {
+  text-align: center;
+  /* Increase text size for better visibility */
+  font-size: 1em;
+  /* Center the summary */
+  text-align: center;
+  color: rgb(190, 190, 190);
+}
+
+/* Service details list styles */
+.lists {
+  list-style: none;
+  display: flex;
+  color: rgb(190, 190, 190);
+  opacity: 0.7;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list {
+  width: 100%;
+  font-size: 0.9em;
+  display: flex;
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-family: Arial, sans-serif;
+  gap: 10px;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* Card back styles */
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Decorative background design */
+.img-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  align-self: baseline;
+  width: 100%;
+  height: 72%;
+  z-index: -10;
+  background: rgb(0, 0, 0);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: clip-path 0.2s ease-in-out;
+  border-radius: 4px;
+}
+
+/* Learn more button styles */
+.btn-card {
+  display: flex;
+  padding: 16px 24px;
+  background: wheat;
+  border: transparent;
+  font-weight: 100;
+  transition: 0.3s;
+  cursor: pointer;
+  font-family: "Roboto", serif;
+}
+
+/* Learn more button hover and focus styles */
+.btn-card:hover,
+.btn-card:focus {
+  background: hsla(var(--hue), 25%, 10%, 0.2);
+  box-shadow: none;
+  color: #ffffff;
+}
+
+.btn-card:active {
+  transform: translate(2px);
+}
+
+/* Decorative designs on back side of cards */
+.design-container {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.orange-lines > span {
+  background: #5a3000;
+}
+.blue-lines > span {
+  background: #0160d4;
+}
+.green-lines > span {
+  background: #015f38;
+}
+/* .design-container */
+.design-container {
+  --tr: 90;
+  --op: 0.5;
+
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  pointer-events: none;
+}
+
+/* .design */
+.design {
+  display: block;
+
+  background: var(--grey);
+  position: absolute;
+
+  opacity: var(--op);
+  transition: 0.3s;
+}
+
+.design--1,
+.design--2,
+.design--3,
+.design--4 {
+  width: 4px;
+  height: 100%;
+  filter: saturate(4);
+}
+
+.design--1,
+.design--2 {
+  top: 0;
+  transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%));
+}
+
+.design--1 {
+  left: 20%;
+}
+
+.design--2 {
+  left: 80%;
+}
+
+.design--3,
+.design--4 {
+  bottom: 0;
+  transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
+}
+
+.design--3 {
+  left: 24%;
+}
+
+.design--4 {
+  left: 76%;
+}
+
+.design--5,
+.design--6,
+.design--7,
+.design--8 {
+  width: 100%;
+  height: 1px;
+}
+
+.design--5,
+.design--6 {
+  left: 0;
+  transform: translateX(calc((var(--tr) - (var(--tr) * 2)) * 1%));
+}
+
+.design--5 {
+  top: 41%;
+}
+
+.design--6 {
+  top: 59%;
+}
+
+.design--7,
+.design--8 {
+  right: 0;
+  transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
+}
+
+.design--7 {
+  top: 44%;
+}
+
+.design--8 {
+  top: 56%;
+}
+
+/* states */
+.btn-card:hover + .design-container,
+.btn-card:active + .design-container,
+.btn-card:focus + .design-container {
+  --tr: 20;
+  --op: 1;
+}
+
+/* Add a media query for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Parent container */
+  .services {
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+  }
+
+  .flip-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto; /* Use overflow-x to allow horizontal scrolling */
+  }
+}

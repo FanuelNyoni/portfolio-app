@@ -1,173 +1,105 @@
-/* Base Styles */
-
-.contact-container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.left-card {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.custom-message {
-  text-align: center;
-  font-size: 1.2rem;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.message-hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.right-card {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  background-color: #00295c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form {
-  background-color: #fff;
-  text-align: center;
-  padding: 1rem;
-  opacity: .7;
-  box-shadow: 0 0px 30px rgba(0, 0, 0);
-  height: 50%;
-  width: 50%;
-  transition: transform 0.2s ease-in-out, opacity 0.2s;
-  cursor: pointer;
-}
-
-.contact-form:hover {
-  opacity: 1;
-transform: translateY(-5px);
-}
-
-.animated-input {
-  width: 100%;
-  padding: 8px;
-  margin: auto;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s;
-}
-
-.animated-input:hover {
-  border-color: #F7931E;
-}
-
-.send-button {
-  background-color: #1b1b1b;
-  color: #fff;
-  border: none;
-  font-size: 1em;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.send-button:hover {
-  background-color: #e67e00;
-}
-
-.loading-container {
+.contact {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 16px;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background: url("../../img/bg/milad-fakurian-VbC-EiOTDqA-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
   position: relative;
 }
 
-.loading-wheel {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #F7931E;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 2s linear infinite;
+.contact-left-card {
+  width: 100%;
+  height: 100%;
+  color: #e4e4e4;
+  letter-spacing: 1px;
 }
 
-.submission-message {
+.contact-right-card {
+  height: 100%;
+  width: 32%;
   text-align: center;
-  opacity: 0;
-  transition: opacity 0.5s, transform 0.5s;
-  margin-top: 10px;
+  justify-content: center;
+  padding: 16px 24px;
+  box-shadow: 0 0 10px rgba(0, 0, 0);
+  background: rgba(245, 222, 179, 0.40);
+  transition: all .32s ease-in-out;
 }
 
-.form-submitted .contact-form {
-  transform: translateX(200%);
-  opacity: 0;
+.contact-right-card:hover {
+  background: rgba(245, 222, 179, 0.88);
 }
 
-
-.form-submitted .submission-message {
-  opacity: 1;
+.contact-custom-message {
+  text-align: center;
+  font-size: clamp(.64em, .96em, 1.24em);
+  font-weight: 400;
+  opacity: .64;
+  color: #FFF7D6;
 }
 
-/* Enhanced Styles */
-
-/* Smooth Transitions */
-.custom-message, .submission-message {
-  transition: opacity 0.5s, transform 0.5s;
+.contact-form-group {
+  margin-bottom: 20px;
 }
 
-/* Form Reset */
-.form-submitted .animated-input {
-  border-color: #ccc;
-}
-
-/* Input Focus Animation */
-.animated-input:focus {
-  border-color: #F7931E;
-}
-
-/* Field Labels */
 label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
+  display: flex;
+  text-align: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  color: #4b4b4b;
 }
 
-@media screen and (min-width: 768px) {
-  .contact-container {
-    flex-direction: row;
-  }
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid transparent;
+  background: rgba(245, 245, 245, 0.64);
+  transition: border-color 0.3s ease;
+  font-family: 'Roboto', serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-/* Accessibility */
-.animated-input, .send-button {
+.contact-input:focus,
+.contact-textarea:focus {
+  background: whitesmoke;
+  border-color: #007bff;
   outline: none;
 }
 
-/* Iconography */
-.send-button::before {
-  content: '\f1d8';
-  font-family: 'FontAwesome';
-  margin-right: 5px;
+.contact-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.contact-button:hover {
+  background-color: #00295c;
+}
 
-/* Media Queries */
-@media screen and (max-width: 600px) {
-  .contact-form {
+.contact-error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 768px)  {
+  .contact-right-card {
     width: 90%;
-  }
+  }  
 }
 
-/* ... Rest of the CSS ... */
