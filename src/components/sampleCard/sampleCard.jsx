@@ -1,39 +1,44 @@
-import React, { useEffect } from 'react';
-import './sampleCard.css';
+import React, { useEffect, useRef } from 'react';
+import './SampleCard.css';
 
+const SampleCard = () => {
+  const cardRef = useRef(null);
 
-const sampleCard = () => {
   useEffect(() => {
-    // Function to create and animate raindrops
+    const card = cardRef.current;
+
+    if (!card) return;
+
     const createRaindrop = () => {
       const raindrop = document.createElement('div');
       raindrop.className = 'raindrop';
-      raindrop.style.left = Math.random() * 100 + 'vw';
-      document.body.appendChild(raindrop);
+      raindrop.style.left = Math.random() * card.offsetWidth + 'px';
+      card.appendChild(raindrop);
 
       setTimeout(() => {
-        raindrop.remove();
-      }, 2000);
-
-      raindrop.addEventListener('animationiteration', () => {
-        raindrop.style.left = Math.random() * 100 + 'vw';
-      });
+        raindrop.style.top = card.offsetHeight + 'px'; // Move the raindrop to the bottom
+        raindrop.style.transform = 'scaleY(0.1)'; // Squish the raindrop vertically
+        raindrop.style.opacity = 0; // Make it transparent
+        setTimeout(() => {
+          raindrop.remove();
+        }, 1000);
+      }, 1500);
     };
 
-    // Create raindrops at intervals
     const rainInterval = setInterval(createRaindrop, 200);
 
-    // Cleanup the interval on component unmount
     return () => clearInterval(rainInterval);
   }, []);
 
   return (
-    <div className="rain-card">
-      <div className="card-content">
-        {/* Your card content goes here */}
+    <div className="samplecard">
+      <div className="rain-card" ref={cardRef}>
+        <div className="card-content">
+          {/* Your card content goes here */}
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default sampleCard
+export default SampleCard;

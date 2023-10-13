@@ -49,11 +49,7 @@ const Navbar = () => {
     <nav className={`navbar ${visible ? "navbar--visible" : "navbar--hidden"}`}>
       <div className="navbar__container">
         {/* Your logo */}
-        <motion.img
-        initial={{ scale: 0, rotateY: 0}}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2 }}
-        whileHover={{ rotateY: 180 }}
+        <img
         className="logo"
          src={logo} alt="logo" />
 

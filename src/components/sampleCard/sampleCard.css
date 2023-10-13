@@ -1,5 +1,15 @@
+.samplecard {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 .rain-card {
-    position: relative;
+    position: absolute;
+    object-fit: contain;
     width: 300px;
     height: 400px;
     background: #0085FF;
@@ -13,7 +23,7 @@
   }
   
   .raindrop {
-    position: absolute;
+    position: relative;
     width: 2px;
     height: 10px;
     background: #00A8FF;

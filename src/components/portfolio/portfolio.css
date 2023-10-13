@@ -148,7 +148,7 @@
   height: 90%;
   text-align: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #fff, wheat);
+  background: linear-gradient(to bottom right, rgb(255, 255, 255, .56), rgb(245, 222, 179, .64));
 }
 
 .slide-info {
@@ -164,15 +164,14 @@
 }
 
 .slide-info li:nth-child(1) {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   font-family: "Pixelify Sans", cursive;
   letter-spacing: 1px;
   color: black;
   text-transform: uppercase;
-  padding: 16px 24px;
-  box-shadow: 0 0 8px black;
-  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 0 2px black;
 }
 
 .slide-info li:nth-child(2) {

@@ -178,6 +178,12 @@ background: #00295c;
 .logo{
 width: 100px;
 height: 50px; cursor: pointer;
-filter: drop-shadow(-2px -2px 0px black)
+filter: drop-shadow(-2px -2px 0px black);
+transform: rotateY(0);
+transition: transform .64s ease-in-out;
+}
+
+.logo:hover {
+  transform: rotateY(180deg);
 }
 
