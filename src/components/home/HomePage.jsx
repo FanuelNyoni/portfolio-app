@@ -4,7 +4,6 @@ import "./HomePage.css";
 import { FaCode, FaCss3, FaHtml5, FaReact } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-
 // Define the HomePage component
 const HomePage = () => {
   // Render the component JSX
@@ -17,8 +16,8 @@ const HomePage = () => {
           <span style={{ color: "orange" }}>& FrontEnd </span>
         </h1>
         <p>
-          Pariatur quae doloribus, dolore consequuntur eveniet quam saepe <br/> labore
-          maxime doloremque aperiam debitis totam enim.
+          Pariatur quae doloribus, dolore consequuntur eveniet quam saepe <br />{" "}
+          labore maxime doloremque aperiam debitis totam enim.
         </p>
         <a
           style={{ textDecoration: "none" }}
@@ -26,9 +25,15 @@ const HomePage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <motion.button             initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }} className="app-button">Let's Talk</motion.button>
+          <motion.button
+            initial={{ y: -200, scale: .48 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            whileInView={{ scale: 1 }}
+            className="app-button"
+          >
+            Let's Talk
+          </motion.button>
         </a>
       </div>
       <div className="home-page-animation">

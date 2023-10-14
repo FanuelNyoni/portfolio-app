@@ -33,9 +33,9 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const offset = 60; // Adjust this value to offset the scroll position as needed
+      const offset = 100; // Adjust this value to offset the scroll position as needed
       const top =
-        section.getBoundingClientRect().top + window.pageYOffset - offset;
+        section.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
     }
     setMenuOpen(false);

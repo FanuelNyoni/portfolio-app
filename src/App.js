@@ -11,7 +11,6 @@ import Footer from "./components/footer/Footer";
 import Portfolio from "./components/portfolio/Portfolio";
 import Perlin from "./components/Sub/Perlin";
 import Services from "./components/Expertise/Services";
-import SampleCard from "./components/sampleCard/SampleCard";
 
 const App = () => { 
   
@@ -28,7 +27,6 @@ const App = () => {
       <Perlin/>
       <Portfolio /> {/* Experiences or timeline section */}
       <Services />
-      <SampleCard />
       <Experiences />
       <Contact />
  {/* Footer will appear on all pages except the last one */}
