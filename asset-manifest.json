@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/portfolio-app/static/css/main.ac80c2cc.css",
+    "main.js": "/portfolio-app/static/js/main.d898e522.js",
+    "static/media/philip-oroni-KM_SItStu_s-unsplash.jpg": "/portfolio-app/static/media/philip-oroni-KM_SItStu_s-unsplash.f52839f545c014e08718.jpg",
+    "static/media/milad-fakurian-DjjaZybYx4I-unsplash.jpg": "/portfolio-app/static/media/milad-fakurian-DjjaZybYx4I-unsplash.5588b8963b95f6f61e79.jpg",
+    "static/media/milad-fakurian-JTKKRK05NAM-unsplash.jpg": "/portfolio-app/static/media/milad-fakurian-JTKKRK05NAM-unsplash.342d807ec1d3c75b0293.jpg",
+    "static/media/abik-peravan-EeG2dvPX5uo-unsplash.jpg": "/portfolio-app/static/media/abik-peravan-EeG2dvPX5uo-unsplash.b977c830541abd2e7db1.jpg",
+    "static/media/milad-fakurian-VbC-EiOTDqA-unsplash.jpg": "/portfolio-app/static/media/milad-fakurian-VbC-EiOTDqA-unsplash.a1b1e1492513c26c513b.jpg",
+    "static/media/profile_name.svg": "/portfolio-app/static/media/profile_name.2d7610f3f46f4ece4e01527c81d5b4fa.svg",
+    "static/media/profile-img.svg": "/portfolio-app/static/media/profile-img.0e9ac42f4b18dfebfe109ca116b49371.svg",
+    "static/media/logo.svg": "/portfolio-app/static/media/logo.c5a09d546fd1ac63cf984c5298682339.svg",
+    "index.html": "/portfolio-app/index.html",
+    "main.ac80c2cc.css.map": "/portfolio-app/static/css/main.ac80c2cc.css.map",
+    "main.d898e522.js.map": "/portfolio-app/static/js/main.d898e522.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac80c2cc.css",
+    "static/js/main.d898e522.js"
+  ]
+}
